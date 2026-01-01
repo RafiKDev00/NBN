@@ -29,6 +29,8 @@ final class AppModel: ObservableObject {
     var applicantEmail: String { applicant?.email ?? "" }
     var applicantPhone: String { applicant?.phone ?? "" }
     var applicantDOB: String { applicant?.dateOfBirth ?? "" }
+    var applicantAdvisor: String { applicant?.advisor ?? "Ploni Almoni" }
+    var applicantAdvisorEmail: String { applicant?.advisorEmail ?? "PloniAmoni@nbn.org.il" }
 
     // Access individual documents by name
     func document(named name: String) -> Document? {

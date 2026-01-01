@@ -1,7 +1,6 @@
 import Foundation
 import Security
 
-/// Minimal Keychain wrapper similar to Booster's bearer token usage.
 enum Keychain {
     private static let service = "com.nbn.client"
     private static let account = "bearerToken"

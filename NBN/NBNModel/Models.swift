@@ -26,6 +26,8 @@ public struct Applicant: Codable, Identifiable {
     public var email: String
     public var phone: String
     public var dateOfBirth: String
+    public var advisor: String?
+    public var advisorEmail: String?
     public var profilePicture: String?
     public let createdAt: String
     public var documents: [Document]
@@ -38,6 +40,8 @@ public struct CreateApplicantRequest: Encodable {
     public var email: String
     public var phone: String
     public var dateOfBirth: String
+    public var advisor: String?
+    public var advisorEmail: String?
     public var profilePicture: String?
 }
 
@@ -46,6 +50,8 @@ public struct UpdateApplicantRequest: Encodable {
     public var email: String?
     public var phone: String?
     public var dateOfBirth: String?
+    public var advisor: String?
+    public var advisorEmail: String?
     public var profilePicture: String?
 }
 
