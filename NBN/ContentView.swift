@@ -77,33 +77,6 @@ struct ContentView: View {
         }
     }
 }
-
-struct SplashView: View {
-    @State private var opacity: Double = 0
-    @State private var offset: CGFloat = -100
-    
-    var body: some View {
-        ZStack {
-            Color.white // Change to match your brand color if needed
-                .ignoresSafeArea()
-            
-            Image("NBN-Logo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width * 0.6)
-                .opacity(opacity)
-                .offset(x: offset)
-        }
-        .onAppear {
-            // Slide in from left with fade
-            withAnimation(.easeOut(duration: 0.8).delay(0.2)) {
-                opacity = 1.0
-                offset = 0
-            }
-        }
-    }
-}
-
 #Preview {
     ContentView()
 }

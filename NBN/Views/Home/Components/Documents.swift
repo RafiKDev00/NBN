@@ -34,9 +34,6 @@ struct Documents: View {
                 Text("hello")
             }
         }
-        .padding(.horizontal, 12)
-        .frame(maxWidth: .infinity, alignment: .top)
-
         
     }
 }

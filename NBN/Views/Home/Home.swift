@@ -12,53 +12,25 @@ struct Home: View {
     var onSelectFlight: (() -> Void)? = nil
     @StateObject private var app = AppModel.shared
     
-    
     var body: some View {
         ScrollView {
             VStack(spacing: 12) {
-                HomeTextCard(height: 200){
-                    Text("Application Progress")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                } content: {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("Your advisor is: \(app.applicantAdvisor)")
-                        Text("hello")
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(nil)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-                .padding(.top, 12)
+                ApplicationProgressCard()
                 
-                
-                HStack(spacing: 8) {
-                    
+                HStack(spacing: 12) {
                     AdvisorCard()
-                    
-                    
                     ReserveFlightCard(onSelectFlight: onSelectFlight)
                 }
-                
+
                 Documents()
             }
-               
+            .padding(.top, 12)
+            .padding(.horizontal, 12)
+            .padding(.bottom, 12)
+            .frame(maxWidth: .infinity, alignment: .top)
         }
         .safeAreaBar(edge: .top){
-            HStack(alignment: .center){
-                Image("NBN_txtonly_Logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 150, height: 50)
-                Spacer()
-            }
-            .padding(.horizontal)
-            .padding(.vertical, 20)
-            .background(
-                NBNColors.alabaster
-                    .shadow(color: NBNColors.bondiBlue.opacity(0.3), radius: 4, y: 4)
-                    .ignoresSafeArea()
-            )
+            NBNHeader()
         }
     }
 }

@@ -17,13 +17,13 @@ struct ReserveFlightCard: View {
                 .fontWeight(.semibold)
         } content: {
             VStack(alignment: .center, spacing: 0) {
-                Spacer()
+//                Spacer()
                 if app.completedDocuments == app.totalDocuments{
                     Text("You are Ready to Schedule a Flight!")
-                        .padding(.bottom, 10)
+                        Spacer()
                 } else {
                     Text("Finish submitting documents for flight approval!")
-                        .padding(.bottom, 10)
+                    Spacer()
                 }
                 
                 Button {
@@ -31,18 +31,16 @@ struct ReserveFlightCard: View {
                         onSelectFlight?()
                     }
                 } label:{
-                    Text("schedule flight")
+                    Text("schedule flight \(Image(systemName: "chevron.right"))")
                     
                 }
                 .buttonStyle(GlassButtonStyle())
                 .disabled(app.completedDocuments != app.totalDocuments)
                 .tint(app.completedDocuments == app.totalDocuments ? NBNColors.bondiBlue : NBNColors.doveGray.opacity(0.5))
                 
-                Spacer()
                 
             }
         }
-        .padding(.vertical, 8)
     }
 }
 
