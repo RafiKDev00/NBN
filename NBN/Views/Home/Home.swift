@@ -9,79 +9,41 @@ import SwiftUI
 
 struct Home: View {
     
+    var onSelectFlight: (() -> Void)? = nil
     @StateObject private var app = AppModel.shared
     
     
     var body: some View {
-        VStack {
-            HomeTextCard(width: .infinity ,height: 200){
-                Text("Application Progress")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-            } content: {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Your advisor is: \(app.applicantAdvisor)")
-                    Text("hello")
-                }
-            }
-            HStack(spacing: 8) {
-                HomeTextCard(width: .infinity ,height: 200){
-                    Text("Aliyah Advisor")
-                        .font(.title3)
+        ScrollView {
+            VStack(spacing: 12) {
+                HomeTextCard(height: 200){
+                    Text("Application Progress")
+                        .font(.title2)
                         .fontWeight(.semibold)
                 } content: {
-                    VStack(alignment: .center, spacing: 6) {
-                        Text("\(app.applicantAdvisor)")
-                        HStack(spacing: 0) {
-                            Image(systemName: "envelope")
-                            Text(" \(app.applicantAdvisorEmail)")
-                        }
-                        Image(systemName: "lifepreserver")
-                            .font(.system(size: 45))
-                        
-                        Text("Please Share Feedback about the application: ")
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Your advisor is: \(app.applicantAdvisor)")
+                        Text("hello")
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
-                    .font(.caption)
+                }
+                .padding(.top, 12)
+                
+                
+                HStack(spacing: 8) {
+                    
+                    AdvisorCard()
+                    
+                    
+                    ReserveFlightCard(onSelectFlight: onSelectFlight)
                 }
                 
-                HomeTextCard(width: .infinity ,height: 200){
-                    Text("Reserve Flight")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                } content: {
-                    VStack(alignment: .center, spacing: 0) {
-                        Spacer()
-                            if 
-                        
-                        Button {
-                            
-                        } label:{
-                            Text("schedule flight")
-                            
-                        }
-                        .buttonStyle(GlassButtonStyle())
-                        
-                        Spacer()
-                        
-                    }
-                }
+                Documents()
             }
-            .padding(.vertical, 8)
-            HomeTextCard(width: .infinity ,height: 200){
-                Text("Application Progress")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-            } content: {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Your advisor is: \(app.applicantAdvisor)")
-                    Text("hello")
-                }
-            }
-            Spacer()
+               
         }
-        .padding(.top, 12)
-        .padding(.horizontal, 12)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .safeAreaBar(edge: .top){
             HStack(alignment: .center){
                 Image("NBN_txtonly_Logo")
@@ -94,7 +56,8 @@ struct Home: View {
             .padding(.vertical, 20)
             .background(
                 NBNColors.alabaster
-                    .shadow(color: NBNColors.bondiBlue.opacity(0.3), radius: 4, y: 0)
+                    .shadow(color: NBNColors.bondiBlue.opacity(0.3), radius: 4, y: 4)
+                    .ignoresSafeArea()
             )
         }
     }

@@ -17,6 +17,7 @@ import CoreData
 struct ContentView: View {
     @State private var isShowingSplash = true
     @StateObject private var appModel = AppModel.shared
+    @State private var tabSelection = 0
     
     var body: some View {
         ZStack {
@@ -25,7 +26,7 @@ struct ContentView: View {
                     .transition(.opacity)
             } else {
                 if let applicant = appModel.applicant {
-                    TabView{
+                    TabView(selection: $tabSelection){
                         MyDocuments()
                             .tabItem {
                                 Label {
@@ -37,23 +38,28 @@ struct ContentView: View {
                                     )
                                 }
                             }
-                        Home()
+                            .tag(0)
+                        Home(onSelectFlight: { tabSelection = 2 })
                             .tabItem {
                                 Label {
                                     Text("Home")
                                 } icon: {
-                                    Image.fromView(
-                                        UserIcon(),
-                                        size: CGSize(width: 40, height: 40)
-                                    )
+                                    Image("IconUser")
+                                        .renderingMode(.template)
                                 }
                             }
+                            .tag(1)
 
                         FlightReservation()
                             .tabItem{
-                                Label("Flight", systemImage: "airplane")
-                                //need to find a hollow version
+                                Label {
+                                    Text("Flight")
+                                } icon: {
+                                    Image("IconFlight")
+                                        .renderingMode(.template)
+                                }
                             }
+                            .tag(2)
                     }
                 } else {
                     AuthView { newApplicant in
