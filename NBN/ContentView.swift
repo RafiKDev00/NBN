@@ -39,7 +39,7 @@ struct ContentView: View {
                                 }
                             }
                             .tag(0)
-                        Home(onSelectFlight: { tabSelection = 2 })
+                        Home(onSelectFlight: { tabSelection = 2 }, onSelectDocuments: { tabSelection = 0 })
                             .tabItem {
                                 Label {
                                     Text("Home")

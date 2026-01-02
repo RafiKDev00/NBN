@@ -58,10 +58,10 @@ struct ApplicationProgressCard: View{
                         guard isComplete else { return }
                         submitted = true
                     }label: {
-                        Text("Submit Documents")
+                        Text("Submit")
                             .foregroundStyle(isComplete ? NBNColors.alabaster : NBNColors.doveGray)
                     }
-                    .buttonStyle(GlassButtonStyle())
+                    .buttonStyle(GlassProminentButtonStyle())
                     .disabled(!isComplete || submitted)
                     .background(
                         (isComplete ? NBNColors.elAlHaiti : NBNColors.doveGray.opacity(0.2))

@@ -34,7 +34,7 @@ struct ReserveFlightCard: View {
                     Text("schedule flight \(Image(systemName: "chevron.right"))")
                     
                 }
-                .buttonStyle(GlassButtonStyle())
+                .buttonStyle(GlassProminentButtonStyle())
                 .disabled(app.completedDocuments != app.totalDocuments)
                 .tint(app.completedDocuments == app.totalDocuments ? NBNColors.bondiBlue : NBNColors.doveGray.opacity(0.5))
                 

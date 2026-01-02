@@ -10,6 +10,7 @@ import SwiftUI
 struct Home: View {
     
     var onSelectFlight: (() -> Void)? = nil
+    var onSelectDocuments: (() -> Void)? = nil
     @StateObject private var app = AppModel.shared
     
     var body: some View {
@@ -22,7 +23,7 @@ struct Home: View {
                     ReserveFlightCard(onSelectFlight: onSelectFlight)
                 }
 
-                Documents()
+                Documents(onSelectDocuments: onSelectDocuments)
             }
             .padding(.top, 12)
             .padding(.horizontal, 12)
