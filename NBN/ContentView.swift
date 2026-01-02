@@ -18,6 +18,9 @@ struct ContentView: View {
     @State private var isShowingSplash = true
     @StateObject private var appModel = AppModel.shared
     @State private var tabSelection = 1
+    private let documentsTabIconSize: CGFloat = 32
+    private let homeTabIconSize: CGFloat = 80
+    private let flightTabIconSize: CGFloat = 32
     
     var body: some View {
         ZStack {
@@ -34,7 +37,7 @@ struct ContentView: View {
                                 } icon: {
                                     Image.fromView(
                                         DocumentsIcon(),
-                                        size: CGSize(width: 40, height: 40)
+                                        size: CGSize(width: documentsTabIconSize, height: documentsTabIconSize)
                                     )
                                 }
                             }
@@ -44,8 +47,7 @@ struct ContentView: View {
                                 Label {
                                     Text("Home")
                                 } icon: {
-                                    Image("IconUser")
-                                        .renderingMode(.template)
+                                    tabIcon(named: "IconUser", size: homeTabIconSize)
                                 }
                             }
                             .tag(1)
@@ -53,10 +55,9 @@ struct ContentView: View {
                         FlightReservation()
                             .tabItem{
                                 Label {
-                                    Text("Flight")
+                                    Text("Flights")
                                 } icon: {
-                                    Image("IconFlight")
-                                        .renderingMode(.template)
+                                    tabIcon(named: "IconFlight", size: flightTabIconSize)
                                 }
                             }
                             .tag(2)
@@ -76,6 +77,17 @@ struct ContentView: View {
             }
         }
     }
+}
+
+private func tabIcon(named: String, size: CGFloat) -> Image {
+    Image.fromView(
+        Image(named)
+            .renderingMode(.template)
+            .resizable()
+            .scaledToFit(),
+        size: CGSize(width: size, height: size)
+    )
+    .renderingMode(.template)
 }
 #Preview {
     ContentView()

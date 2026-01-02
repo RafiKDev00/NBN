@@ -9,7 +9,18 @@ import SwiftUI
 
 struct FlightReservation: View {
     var body: some View {
-        Text("Flight Reservation")
+        ScrollView{
+            VStack{
+                Spacer()
+                Text("Flight Reservation")
+                Spacer()
+            }
+
+        }
+        .safeAreaBar(edge: .top){
+            NBNHeader()
+        }
+        
     }
 }
 
