@@ -99,6 +99,7 @@ final class AppModel: ObservableObject {
             mimeType: updatedDoc.mimeType,
             size: updatedDoc.size
         )
+        await loadProgress()
         return updatedDoc
     }
 
