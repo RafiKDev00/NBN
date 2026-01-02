@@ -12,11 +12,14 @@ struct ProgressRing: View {
     
     var size: CGFloat = 120
     var lineWidth: CGFloat = 16
+    var overrideCompleted: Int?
+    var overrideTotal: Int?
     
     private var progressFraction: Double {
-        let total = max(app.totalDocuments, 0)
+        let completed = Double(overrideCompleted ?? app.completedDocuments)
+        let total = Double(overrideTotal ?? app.totalDocuments)
         guard total > 0 else { return 0 }
-        let fraction = Double(app.completedDocuments) / Double(total)
+        let fraction = completed / total
         return min(max(fraction, 0), 1)
     }
 
@@ -38,6 +41,7 @@ struct ProgressRing: View {
                 .trim(from: 0, to: progressFraction)
                 .rotation(.degrees(-90))
                 .stroke(NBNColors.bondiBlue, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                .shadow(color: NBNColors.bondiBlue.opacity(0.4), radius: 2, x: 0, y: 0)
             
             Text(percentString)
                 .font(.system(size: 25, weight: .bold))
@@ -49,6 +53,12 @@ struct ProgressRing: View {
 }
 
 #Preview {
-    ProgressRing()
+    VStack(spacing: 16) {
+        ProgressRing(overrideCompleted: 6, overrideTotal: 12)
+        Spacer()
+        ProgressRing(overrideCompleted: 12, overrideTotal: 12)
+        Spacer()
+        ProgressRing(overrideCompleted: 0, overrideTotal: 12)
+    }
+    .padding()
 }
-

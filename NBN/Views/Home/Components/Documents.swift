@@ -17,24 +17,67 @@ struct Documents: View {
                     .font(.title3.weight(.semibold))
                 
                 Spacer()
-                
-                Text("\(app.completedDocuments) / \(app.totalDocuments)")
-                    .font(.headline.weight(.semibold))
-                    .foregroundStyle(NBNColors.bondiBlue)
-                    .padding(.vertical, 2)
-                    .padding(.horizontal, 8)
-                    .overlay(
-                        Capsule()
-                            .stroke(NBNColors.bondiBlue, lineWidth: 2)
-                    )
+                HStack(spacing: 6) {
+                    Text("\(app.completedDocuments) / \(app.totalDocuments)")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(NBNColors.bondiBlue)
+                        .padding(.vertical, 2)
+                        .padding(.horizontal, 8)
+                        .overlay(
+                            Capsule()
+                                .stroke(NBNColors.bondiBlue, lineWidth: 2)
+                        )
+                }
             }
         } content: {
-            VStack(alignment: .leading, spacing: 6) {
-                Text("Your advisor is: \(app.applicantAdvisor)")
-                Text("hello")
+            HStack(){
+                VStack(){
+                    Image("Icon06")
+                        .renderingMode(.template)
+                        .foregroundColor(.black)
+                    
+                    Spacer()
+                    
+                    Image("Icon05")
+                        .renderingMode(.template)
+                        .foregroundColor(.black)
+                    
+                }
+                Spacer()
+                
+                VStack(){
+                    Text("\(app.completedDocuments) / 2")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(NBNColors.bondiBlue)
+                        .padding(.vertical, 2)
+                        .padding(.horizontal, 8)
+                        .overlay(
+                            Capsule()
+                                .stroke(NBNColors.bondiBlue, lineWidth: 2)
+                        )
+                    Spacer()
+                    
+                    Text("\(app.completedDocuments) / 10")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(NBNColors.bondiBlue)
+                        .padding(.vertical, 2)
+                        .padding(.horizontal, 8)
+                        .overlay(
+                            Capsule()
+                                .stroke(NBNColors.bondiBlue, lineWidth: 2)
+                        )
+                    
+                }
+                
+                Spacer()
+                
+                VStack(){
+                    Text(app.applicantName)
+                    Spacer()
+                    Text("General Documents")
+                }
             }
         }
-        
     }
 }
 

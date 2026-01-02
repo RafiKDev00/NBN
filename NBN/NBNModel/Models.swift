@@ -65,6 +65,12 @@ public struct ProgressResponse: Decodable {
     public let uploaded: Int
     public let remaining: Int
     public let total: Int
+    public let generalUploaded: Int?
+    public let generalRemaining: Int?
+    public let generalTotal: Int?
+    public let personalUploaded: Int?
+    public let personalRemaining: Int?
+    public let personalTotal: Int?
 }
 
 // MARK: - Document Names (helps avoid typos)

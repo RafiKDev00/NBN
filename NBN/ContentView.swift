@@ -17,7 +17,7 @@ import CoreData
 struct ContentView: View {
     @State private var isShowingSplash = true
     @StateObject private var appModel = AppModel.shared
-    @State private var tabSelection = 0
+    @State private var tabSelection = 1
     
     var body: some View {
         ZStack {
